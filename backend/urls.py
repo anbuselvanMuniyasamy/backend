@@ -21,7 +21,7 @@ from inventory.views import (
     ProductViewSet, StockTransactionViewSet,
     CurrentStockAPIView, LowStockAPIView, TotalSalesAPIView, RegisterAPIView, landing_page
 )
-from rest_framework.authtoken.views import obtain_auth_token  # <-- token login view
+from rest_framework.authtoken.views import obtain_auth_token 
 
 router = DefaultRouter()
 router.register(r'products', ProductViewSet, basename='product')
