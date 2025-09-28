@@ -1,8 +1,14 @@
+
+from rest_framework import viewsets
 from rest_framework import viewsets
 from rest_framework.response import Response 
 from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny 
 from rest_framework.views import APIView 
 from django.contrib.auth.models import User 
+from django.db.models import Sum, F, ExpressionWrapper, DecimalField 
+from decimal import Decimal 
+from .models import Product, StockTransaction 
+from .serializers import ProductSerializer, StockTransactionSerializer
 from django.db.models import Sum, F, ExpressionWrapper, DecimalField 
 from decimal import Decimal 
 from .models import Product, StockTransaction 
@@ -95,6 +101,9 @@ class RegisterAPIView(CreateAPIView):
     serializer_class = RegisterSerializer
     permission_classes = [AllowAny]  
 
+
+
+
     def create(self, request):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -109,9 +118,18 @@ class RegisterAPIView(CreateAPIView):
 
 
 
- def landing_page(request):
-     return HttpResponse("""
+
+def index(request):
+    return HttpResponse("<h1>Inventory API</h1><p>Go to <a href='/api/'>/api/</a> to see endpoints.</p>")
+
+
+
+def landing_page(request):
+    return HttpResponse("""
         <h1>Inventory & Stock Management</h1>
+
+        <p>Welcome to the Inventory System Backend </p>
+
         <p>Welcome to the Inventory System Backend 🚀</p>
         <ul>
             <li><a href='/api/'>Go to API Endpoints</a></li>
