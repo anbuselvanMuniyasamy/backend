@@ -18,6 +18,10 @@ class Product(models.Model):
 
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0058cfcddd355e69c1d8cea8f79bf7aa2579ae46
 class StockTransaction(models.Model):
     TRANSACTION_IN = 'IN'
     TRANSACTION_OUT = 'OUT'

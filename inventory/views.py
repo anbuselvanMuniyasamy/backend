@@ -1,12 +1,24 @@
+<<<<<<< HEAD
 from rest_framework import viewsets
+=======
+from rest_framework import viewsets, status 
+>>>>>>> 0058cfcddd355e69c1d8cea8f79bf7aa2579ae46
 from rest_framework.response import Response 
 from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny 
 from rest_framework.views import APIView 
 from django.contrib.auth.models import User 
+<<<<<<< HEAD
 from django.db.models import Sum, F, ExpressionWrapper, DecimalField 
 from decimal import Decimal 
 from .models import Product, StockTransaction 
 from .serializers import ProductSerializer, StockTransactionSerializer
+=======
+from rest_framework_simplejwt.tokens import RefreshToken 
+from django.db.models import Sum, F, ExpressionWrapper, DecimalField 
+from decimal import Decimal 
+from .models import Product, StockTransaction 
+from .serializers import ProductSerializer, StockTransactionSerializer, UserSerializer 
+>>>>>>> 0058cfcddd355e69c1d8cea8f79bf7aa2579ae46
 from rest_framework.generics import CreateAPIView 
 from rest_framework import serializers
 from django.http import HttpResponse
@@ -95,7 +107,11 @@ class RegisterAPIView(CreateAPIView):
     serializer_class = RegisterSerializer
     permission_classes = [AllowAny]  
 
+<<<<<<< HEAD
     def create(self, request):
+=======
+    def create(self, request, *args, **kwargs):
+>>>>>>> 0058cfcddd355e69c1d8cea8f79bf7aa2579ae46
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
@@ -108,11 +124,21 @@ class RegisterAPIView(CreateAPIView):
 
 
 
+<<<<<<< HEAD
+=======
+def index(request):
+    return HttpResponse("<h1>Inventory API</h1><p>Go to <a href='/api/'>/api/</a> to see endpoints.</p>")
+
+>>>>>>> 0058cfcddd355e69c1d8cea8f79bf7aa2579ae46
 
 def landing_page(request):
     return HttpResponse("""
         <h1>Inventory & Stock Management</h1>
+<<<<<<< HEAD
         <p>Welcome to the Inventory System Backend </p>
+=======
+        <p>Welcome to the Inventory System Backend 🚀</p>
+>>>>>>> 0058cfcddd355e69c1d8cea8f79bf7aa2579ae46
         <ul>
             <li><a href='/api/'>Go to API Endpoints</a></li>
             <li><a href='/admin/'>Go to Admin Panel</a></li>
